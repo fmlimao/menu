@@ -1,0 +1,142 @@
+.trs(@time) {
+    -webkit-transition: all @time ease;
+    -moz-transition: all @time ease;
+    -ms-transition: all @time ease;
+    -o-transition: all @time ease;
+    transition: all @time ease;
+}
+
+// ----------------------------------
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.box-app {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    right: -200%;
+    background-color: #ccc;
+    width: 100%;
+    height: 100%;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .6);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .6);
+    .trs(400ms);
+
+    &.fixed {
+        right: 0;
+    }
+
+    &.active {
+        right: 0;
+    }
+
+    .title {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #aaa;
+        height: 60px;
+
+        .title-label {
+            position: absolute;
+            top: 0;
+            left: 60px;
+            right: 60px;
+            padding: 0 15px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .title-button {
+            position: absolute;
+            top: 0;
+
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+
+            &.left {
+                left: 0;
+            }
+
+            &.right {
+                right: 0;
+            }
+        }
+    }
+
+    .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 15px;
+    }
+
+    .footer {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #aaa;
+        height: 60px;
+    }
+
+    &.has-title {
+        .title {
+            display: block;
+        }
+
+        .content {
+            top: 60px;
+        }
+    }
+
+    &.has-footer {
+        .footer {
+            display: block;
+        }
+
+        .content {
+            bottom: 60px;
+        }
+    }
+}

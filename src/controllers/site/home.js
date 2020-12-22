@@ -1,6 +1,5 @@
 module.exports = (req, res) => {
-    a();
-    return res.render('site/index', {
+    return res.render('site/home', {
         layout: 'site/layout',
         extractScripts: true,
     });
