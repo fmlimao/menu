@@ -15,6 +15,9 @@ const clients = {
         id: 14,
         slug: 'cliente-xpto',
         name: 'Cliente XPTO',
+        address: 'Rua A, 123, Centro, São Paulo/SP - CEP 01333-000',
+        opened: true,
+        payments: ['Dinheiro', 'Cartão de Crédito', 'Cartão de Débito'],
         categories: [
 
             {
@@ -25,12 +28,44 @@ const clients = {
                     {
                         id: 1,
                         name: 'Lanche 1',
+                        description: 'Laborum elit ullamco eiusmod cupidatat pariatur.',
                         price: 10.99,
+                        priceFormatted: '10,99',
+                        images: {
+                            '120x120': [
+                                '/img/food-120-120-1.jpg',
+                                '/img/food-120-120-2.jpg',
+                                '/img/food-120-120-3.jpg',
+                                '/img/food-120-120-4.jpg',
+                            ],
+                            '720x240': [
+                                '/img/food-720-240-1.jpg',
+                                '/img/food-720-240-2.jpg',
+                                '/img/food-720-240-3.jpg',
+                                '/img/food-720-240-4.jpg',
+                            ],
+                        }
                     },
                     {
                         id: 2,
                         name: 'Lanche 2',
+                        description: 'Laborum elit ullamco eiusmod cupidatat pariatur.',
                         price: 20.99,
+                        priceFormatted: '20,99',
+                        images: {
+                            '120x120': [
+                                '/img/food-120-120-1.jpg',
+                                '/img/food-120-120-2.jpg',
+                                '/img/food-120-120-3.jpg',
+                                '/img/food-120-120-4.jpg',
+                            ],
+                            '720x240': [
+                                '/img/food-720-240-1.jpg',
+                                '/img/food-720-240-2.jpg',
+                                '/img/food-720-240-3.jpg',
+                                '/img/food-720-240-4.jpg',
+                            ],
+                        }
                     },
 
                 ],
@@ -44,12 +79,44 @@ const clients = {
                     {
                         id: 3,
                         name: 'Bebida 1',
+                        description: 'Laborum elit ullamco eiusmod cupidatat pariatur.',
                         price: 10.99,
+                        priceFormatted: '10,99',
+                        images: {
+                            '120x120': [
+                                '/img/food-120-120-1.jpg',
+                                '/img/food-120-120-2.jpg',
+                                '/img/food-120-120-3.jpg',
+                                '/img/food-120-120-4.jpg',
+                            ],
+                            '720x240': [
+                                '/img/food-720-240-1.jpg',
+                                '/img/food-720-240-2.jpg',
+                                '/img/food-720-240-3.jpg',
+                                '/img/food-720-240-4.jpg',
+                            ],
+                        }
                     },
                     {
                         id: 4,
                         name: 'Bebida 2',
+                        description: 'Laborum elit ullamco eiusmod cupidatat pariatur.',
                         price: 20.99,
+                        priceFormatted: '20,99',
+                        images: {
+                            '120x120': [
+                                '/img/food-120-120-1.jpg',
+                                '/img/food-120-120-2.jpg',
+                                '/img/food-120-120-3.jpg',
+                                '/img/food-120-120-4.jpg',
+                            ],
+                            '720x240': [
+                                '/img/food-720-240-1.jpg',
+                                '/img/food-720-240-2.jpg',
+                                '/img/food-720-240-3.jpg',
+                                '/img/food-720-240-4.jpg',
+                            ],
+                        }
                     },
 
                 ],

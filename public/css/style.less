@@ -1,3 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&display=swap');
+
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.font-jura {
+    font-family: 'Jura', sans-serif;
+}
+
+.font-yanone-kaffeesatz {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.font-barlow-condensed {
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+.font-rajdhani {
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.font-spartan {
+    font-family: 'Spartan', sans-serif;
+}
+
+.font-montserrat-alternates {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.font-jaldi {
+    font-family: 'Jaldi', sans-serif;
+}
+
 .trs(@time) {
     -webkit-transition: all @time ease;
     -moz-transition: all @time ease;
@@ -13,16 +59,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0;
-    padding: 0;
+    .font-montserrat;
 }
 
 .inner {
@@ -40,11 +77,22 @@ h6 {
     overflow: hidden;
 }
 
+.box-container {
+    position: relative;
+    margin: auto;
+
+    @media (min-width: 768px) {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 750px;
+    }
+}
+
 .page {
     position: absolute;
     top: 0;
     right: -200%;
-    background-color: #ccc;
+    background-color: #fff;
     width: 100%;
     height: 100%;
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .6);
@@ -65,8 +113,17 @@ h6 {
         top: 0;
         left: 0;
         right: 0;
-        background-color: #aaa;
+        background-color: #2B0D61;
         height: 60px;
+        color: #fff;
+
+        * {
+            color: #fff;
+        }
+
+        .box-container {
+            height: 60px;
+        }
 
         .title-label {
             position: absolute;
@@ -107,7 +164,233 @@ h6 {
         left: 0;
         right: 0;
         bottom: 0;
-        padding: 15px;
+        background-color: #fff;
+        padding: 15px 0;
+        overflow: auto;
+
+        .box-client {
+            position: relative;
+            padding: 0 15px;
+
+            .client-name {
+                margin-bottom: 8px;
+                font-size: 30px;
+            }
+
+            .client-opened {
+                margin-bottom: 8px;
+
+                .label {
+                    display: inline-block;
+                    padding: 8px 15px;
+                    border-radius: 15px;
+                }
+            }
+
+            .client-link {
+                margin-bottom: 8px;
+                font-size: 12px;
+                color: #aaa;
+
+                a {
+                    color: #aaa;
+                }
+            }
+
+            .client-address {
+                margin-bottom: 8px;
+                font-size: 12px;
+                color: #aaa;
+            }
+        }
+
+        .box-category {
+            margin-top: 30px;
+
+            .category-name {
+                position: relative;
+                background-color: #F3F5F7;
+                border-bottom: 1px solid rgb(232, 234, 237);
+                padding: 30px 15px 15px 15px;
+                font-size: 22px;
+                font-weight: bold;
+                color: rgb(72, 84, 96);
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    top: -15px;
+                    display: block;
+                    height: 15px;
+                    background-size: 15px 100%;
+                    background-image:
+                        linear-gradient(45deg, #F3F5F7 25%, transparent 25%),
+                        linear-gradient(-45deg, #F3F5F7 25%, transparent 25%);
+                    background-position: 0 0;
+                }
+            }
+        }
+
+        .box-item {
+
+            table {
+                width: 100%;
+
+                tr {
+                    td {
+                        border-bottom: 1px solid #F3F5F7;
+                    }
+
+                    &:hover {
+                        td {
+                            background-color: #FAFAFA;
+                        }
+                    }
+                }
+            }
+
+            &:last-child {
+                table {
+                    tr {
+                        td {
+                            border-bottom: 0;
+                        }
+                    }
+                }
+            }
+
+            .item-data {
+                display: block;
+                padding: 30px 15px;
+                color: rgb(48, 51, 60);
+
+                &:hover {
+                    text-decoration: none;
+                }
+
+                .item-name {
+                    margin-bottom: 15px;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                .item-description {
+                    margin-bottom: 15px;
+                    font-weight: bold;
+                    color: rgb(127, 143, 159);
+                }
+
+                .item-price {
+                    font-size: 12px;
+                    font-weight: bold;
+
+                    span {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            .item-images {
+                padding: 30px 15px;
+                width: 110px;
+                height: 130px;
+
+                .slideshow {
+                    width: 80px;
+                    height: 80px;
+                    overflow: hidden;
+
+                    >div {
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        outline: none;
+
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .page-item {
+
+            .item-images {
+                padding: 0 15px;
+                margin-bottom: 30px;
+
+                .slideshow {
+                    box-sizing: content-box;
+                    width: 100%;
+                    --aspect-ratio: 3/1;
+                    overflow: hidden;
+
+                    &::before {
+                        content: "";
+                        height: 0;
+                        float: left;
+                        padding-bottom: calc(100%/(var(--aspect-ratio)));
+                    }
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        clear: both;
+                    }
+
+                    >div {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        outline: none;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+
+                @media (min-width: 768px) {
+                    padding: 0;
+                }
+            }
+
+            .item-data {
+                padding: 0 15px;
+                color: rgb(48, 51, 60);
+
+                @media (min-width: 768px) {
+                    padding: 0;
+                }
+
+                .item-name {
+                    margin-bottom: 15px;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                .item-description {
+                    margin-bottom: 15px;
+                    font-weight: bold;
+                    color: rgb(127, 143, 159);
+                }
+
+                .item-price {
+                    font-size: 12px;
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+            }
+
+        }
     }
 
     .footer {
