@@ -2,6 +2,7 @@ var route = new FMRoute();
 
 route.get('/', function (vars, next) {
     App.selectPage(false);
+    App.item = {};
     setTimeout(function () {
         App.slide('.slideshow-list');
     }, 300);
@@ -75,13 +76,17 @@ var App = new Vue({
             return null;
         },
         slide: function (className) {
-            if ($('.slideshow-list').attr('data-start') == '1') $('.slideshow-list').slick('unslick');
-            if ($('.slideshow-item').attr('data-start') == '1') $('.slideshow-item').slick('unslick');
+            if ($('.slideshow-list').attr('data-start') == '1') $('.slideshow-list').slick('unslick').css('display', 'none');
+            if ($('.slideshow-item').attr('data-start') == '1') $('.slideshow-item').slick('unslick').css('display', 'none');
+
+            $(className).off('init').on('init', function(event, slick){
+                $(this).attr('data-start', '1').css('display', 'block');
+            });
 
             $(className).slick({
                 autoplay: true,
                 arrows: false,
-            }).attr('data-start', '1');
+            });
         },
         init: function () {
             route.run();

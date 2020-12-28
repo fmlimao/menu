@@ -22,183 +22,294 @@
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
         crossorigin="anonymous" />
 
+    <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/custom.css">
 </head>
 
 <body>
 
-    <div id="AppVue" class="box-app">
+    <div id="AppVue" class="layout-main">
 
-        <div class="page has-title fixed">
+        <div class="layout-page fixed has-header has-footer">
             <div class="inner">
-                <div class="title">
-                    <div class="inner">
-                        <div class="box-container">
-                            <div class="title-label">
-                                Menu Online
-                            </div>
+
+                <div class="layout-page-header">
+                    <div class="layout-container">
+                        <div class="layout-page-header-title">
+                            {{ client.name }}
                         </div>
                     </div>
                 </div>
+                <!-- /.layout-page-header -->
 
-                <div class="content">
+                <div class="layout-page-content">
+                    <div class="box-page-home">
+                        <div class="layout-container">
+                            <div class="container-fluid">
 
-                    <div class="box-container">
+                                <div class="box-client">
 
-                        <div class="box-client">
+                                    <div class="box-client-link">
+                                        <a href="#/info">
+                                            Sobre a loja <span class="fa fa-chevron-right"></span>
+                                        </a>
+                                    </div>
 
-                            <div class="client-link">
-                                <a href="#/info">
-                                    Sobre a loja <span class="fa fa-chevron-right"></span>
-                                </a>
-                            </div>
+                                    <div class="box-client-name">
+                                        {{ client.name }}
+                                    </div>
 
-                            <div class="client-name">
-                                {{ client.name }}
-                            </div>
+                                    <div class="box-client-opened">
+                                        <div class="label label-success" v-if="client.opened">Aberto</div>
+                                        <div class="label label-danger" v-if="!client.opened">Fechado</div>
+                                    </div>
 
-                            <div class="client-opened">
-                                <div class="label label-success" v-if="client.opened">Aberto</div>
-                                <div class="label label-danger" v-if="!client.opened">Fechado</div>
-                            </div>
+                                </div>
+                                <!-- /.box-client -->
 
-                        </div>
+                                <div class="panel panel-default box-category" v-for="category in client.categories">
 
-                        <div class="box-category" v-for="category in client.categories">
+                                    <div class="panel-heading box-category-name">
+                                        {{ category.name }}
+                                    </div>
 
-                            <div class="category-name">
-                                {{ category.name }}
-                            </div>
+                                    <div class="box-category-items">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <tr v-for="item in category.items">
+                                                    <td valign="top">
 
-                            <div class="box-item" v-for="item in category.items">
+                                                        <a :href="'#/item/' + item.id" class="box-item">
+                                                            <div class="box-item-name">
+                                                                {{ item.name }}
+                                                            </div>
 
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td valign="top">
+                                                            <div class="box-item-description">
+                                                                {{ item.description }}
+                                                            </div>
 
-                                                <a :href="'#/item/' + item.id" class="item-data">
-                                                    <div class="item-name">
-                                                        {{ item.name }}
-                                                    </div>
+                                                            <div class="box-item-price">
+                                                                A partir de <span>R$ {{ item.priceFormatted }}</span>
+                                                            </div>
+                                                        </a>
 
-                                                    <div class="item-description">
-                                                        {{ item.description }}
-                                                    </div>
+                                                    </td>
 
-                                                    <div class="item-price">
-                                                        A partir de <span>R$ {{ item.priceFormatted }}</span>
-                                                    </div>
-                                                </a>
+                                                    <td valign="top" width="110">
 
-                                            </td>
-
-                                            <td valign="top" width="110">
-
-                                                <div class="item-images">
-                                                    <div class="slideshow slideshow-list">
-                                                        <div v-for="image in item.images['120x120']">
-                                                            <img :src="image" :alt="item.name">
+                                                        <div class="box-item-images">
+                                                            <div class="slideshow slideshow-list">
+                                                                <div v-for="image in item.images['120x120']">
+                                                                    <img :src="image" :alt="item.name">
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
 
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.box-category-items -->
+
+                                </div>
+                                <!-- /.box-category -->
 
                             </div>
-
+                            <!-- /.container-fluid -->
                         </div>
-
+                        <!-- /.layout-container -->
                     </div>
-
+                    <!-- /.box-page-home -->
                 </div>
+                <!-- /.layout-page-content -->
+
+                <div class="layout-page-footer">
+                    <div class="layout-container">
+                        <div class="container-fluid">
+                            layout-page-footer
+                        </div>
+                    </div>
+                </div>
+                <!-- /.layout-page-footer -->
+
             </div>
         </div>
+        <!-- /.layout-page -->
 
-        <div class="page has-title" :class="{
+        <div class="layout-page has-header has-footer" :class="{
             'active': pages.item.active,
         }">
             <div class="inner">
-                <div class="title">
-                    <div class="inner">
-                        <div class="box-container">
-                            <div class="title-label">
-                                {{ item.name }}
-                            </div>
 
-                            <div class="title-button left">
-                                <a href="#/">
-                                    <span class="fa fa-arrow-left"></span>
-                                </a>
-                            </div>
+                <div class="layout-page-header">
+                    <div class="layout-container">
+                        <div class="layout-page-header-title">
+                            {{ item.name }}
+                        </div>
+
+                        <div class="layout-page-header-action left">
+                            <a href="#/">
+                                <span class="fa fa-arrow-left"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
+                <!-- /.layout-page-header -->
 
-                <div class="content">
-                    <div class="box-container">
+                <div class="layout-page-content">
+                    <div class="box-page-item">
+                        <div class="layout-container">
+                            <div class="container-fluid">
 
-                        <div class="page-item">
-
-                            <div class="item-images" v-if="item.images">
-                                <div class="slideshow slideshow-item">
-                                    <div v-for="image in item.images['720x240']">
-                                        <img :src="image" :alt="item.name">
+                                <div class="box-item-images big" v-if="item.images">
+                                    <div class="slideshow slideshow-item">
+                                        <div v-for="image in item.images['720x240']">
+                                            <img :src="image" :alt="item.name">
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="box-item">
+                                    <div class="box-item-name">
+                                        {{ item.name }}
+                                    </div>
+
+                                    <div class="box-item-description">
+                                        {{ item.description }}
+                                    </div>
+
+                                    <div class="box-item-price">
+                                        R$ {{ item.priceFormatted }}
+                                    </div>
+                                </div>
+                                <!-- /.box-item -->
+
+                                <div class="panel panel-default box-selector" v-for="(selector, selectorId) in item.selectors">
+
+                                    <div class="panel-heading box-selector-name">
+                                        <div class="inner">
+                                            <div class="title">{{ selector.title }}</div>
+                                            <div class="description">{{ selector.description }}</div>
+                                            <span class="label label-danger" v-if="selector.required">Obrigatório</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-selector-items">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr v-for="selectorItem in selector.items">
+                                                    <td>
+                                                        <div>{{ selectorItem.title }}</div>
+                                                        <div>{{ selectorItem.description }}</div>
+                                                    </td>
+                                                    <td class="text-right" width="100">
+                                                        <div v-if="selectorItem.hasPrice">+R$
+                                                            {{ selectorItem.priceFormatted }}</div>
+                                                    </td>
+                                                    <td class="text-right" width="50">
+                                                        <input type="checkbox" :name="'option_selector_' + selectorId" v-if="selectorItem.type == 'checkbox'"
+                                                            :checked="selectorItem.selected">
+                                                        <input type="radio" :name="'option_selector_' + selectorId" v-if="selectorItem.type == 'radio'"
+                                                            :checked="selectorItem.selected">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.box-selector-items -->
+
+                                </div>
+                                <!-- /.box-selector -->
+
+                                <div class="panel panel-default box-selector">
+
+                                    <div class="panel-heading box-selector-name">
+                                        <div class="inner">
+                                            <div class="title">Observaçoes</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="10" placeholder="Informe aqui caso queira retirar algum ingrediente que não está listado nas pḉões acima."></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.box-selector -->
+
                             </div>
-
-                            <div class="item-data">
-                                <div class="item-name">
-                                    {{ item.name }}
-                                </div>
-
-                                <div class="item-description">
-                                    {{ item.description }}
-                                </div>
-
-                                <div class="item-price">
-                                    R$ {{ item.priceFormatted }}
-                                </div>
-                            </div>
-
+                            <!-- /.container-fluid -->
                         </div>
+                        <!-- /.layout-container -->
+                    </div>
+                    <!-- /.box-page-item -->
+                </div>
+                <!-- /.layout-page-content -->
 
+                <div class="layout-page-footer">
+                    <div class="layout-container">
+                        <div class="container-fluid">
+                            PREÇO AQUI
+                        </div>
                     </div>
                 </div>
+                <!-- /.layout-page-footer -->
+
             </div>
         </div>
+        <!-- /.layout-page -->
 
-        <div class="page has-title" :class="{
+        <div class="layout-page has-header has-footer" :class="{
             'active': pages.info.active,
         }">
             <div class="inner">
-                <div class="title">
-                    <div class="inner">
-                        <div class="box-container">
-                            <div class="title-label">
-                                {{ client.name }}
-                            </div>
 
-                            <div class="title-button left">
-                                <a href="#/">
-                                    <span class="fa fa-arrow-left"></span>
-                                </a>
-                            </div>
+                <div class="layout-page-header">
+                    <div class="layout-container">
+                        <div class="layout-page-header-title">
+                            {{ client.name }}
+                        </div>
+
+                        <div class="layout-page-header-action left">
+                            <a href="#/">
+                                <span class="fa fa-arrow-left"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
+                <!-- /.layout-page-header -->
 
-                <div class="content">
-                    <div class="box-container">
-                        <pre>{{ client }}</pre>
+                <div class="layout-page-content">
+                    <div class="box-page-item">
+                        <div class="layout-container">
+                            <div class="container-fluid">
+
+                                <pre style="overflow: hidden;">{{ client }}</pre>
+
+                            </div>
+                            <!-- /.container-fluid -->
+                        </div>
+                        <!-- /.layout-container -->
+                    </div>
+                    <!-- /.box-page-item -->
+                </div>
+                <!-- /.layout-page-content -->
+
+                <div class="layout-page-footer">
+                    <div class="layout-container">
+                        <div class="container-fluid">
+                            FOOTER
+                        </div>
                     </div>
                 </div>
+                <!-- /.layout-page-footer -->
+
             </div>
         </div>
+        <!-- /.layout-page -->
 
     </div>
 
@@ -219,7 +330,7 @@
         crossorigin="anonymous"></script>
 
     <script src="/lib/fmroute.js"></script>
-    <script>var client = JSON.parse('<%- clientJson %>');</script>
+    <script>var client = JSON.parse('{"id":14,"slug":"cliente-xpto","name":"Cliente XPTO","address":"Rua A, 123, Centro, São Paulo/SP - CEP 01333-000","opened":true,"payments":["Dinheiro","Cartão de Crédito","Cartão de Débito"],"categories":[{"id":1,"name":"Lanches","items":[{"id":1,"name":"Lanche 1","description":"Laborum elit ullamco eiusmod cupidatat pariatur.","price":50,"priceFormatted":"10,99","images":{"120x120":["/img/food-120-120-1.jpg","/img/food-120-120-2.jpg","/img/food-120-120-3.jpg","/img/food-120-120-4.jpg"],"720x240":["/img/food-720-240-1.jpg","/img/food-720-240-2.jpg","/img/food-720-240-3.jpg","/img/food-720-240-4.jpg"]},"selectors":[{"title":"Seletor 3 com preço","description":"Escolha até 3 opções","required":false,"min":0,"max":3,"items":[{"title":"3 :: Opt 1","description":"","type":"checkbox","selected":false,"hasPrice":true,"price":10,"priceFormatted":"10,00"},{"title":"3 :: Opt 2","description":"","type":"checkbox","selected":true,"hasPrice":true,"price":2,"priceFormatted":"2,00"},{"title":"3 :: Opt 3","description":"","type":"checkbox","selected":false,"hasPrice":true,"price":3,"priceFormatted":"3,00"},{"title":"3 :: Opt 4","description":"","type":"checkbox","selected":false,"hasPrice":true,"price":4,"priceFormatted":"4,00"},{"title":"3 :: Opt 5","description":"","type":"checkbox","selected":false,"hasPrice":true,"price":5,"priceFormatted":"5,00"}]},{"title":"Seletor 2","description":"Escolha de 2 até 4 opções","required":true,"min":2,"max":4,"items":[{"title":"2 :: Opt 1","description":"","type":"checkbox","selected":false,"hasPrice":false,"price":null,"priceFormatted":null},{"title":"2 :: Opt 2","description":"","type":"checkbox","selected":false,"hasPrice":false,"price":null,"priceFormatted":null},{"title":"2 :: Opt 3","description":"","type":"checkbox","selected":false,"hasPrice":false,"price":null,"priceFormatted":null},{"title":"2 :: Opt 4","description":"","type":"checkbox","selected":false,"hasPrice":false,"price":null,"priceFormatted":null},{"title":"2 :: Opt 5","description":"","type":"checkbox","selected":false,"hasPrice":false,"price":null,"priceFormatted":null}]},{"title":"Seletor 1","description":"Escolha 1 opção","required":true,"min":1,"max":1,"items":[{"title":"1 :: Opt 1","description":"","type":"radio","selected":false,"hasPrice":false,"price":null,"priceFormatted":null},{"title":"1 :: Opt 2","description":"","type":"radio","selected":false,"hasPrice":false,"price":null,"priceFormatted":null},{"title":"1 :: Opt 3","description":"","type":"radio","selected":false,"hasPrice":false,"price":null,"priceFormatted":null},{"title":"1 :: Opt 4","description":"","type":"radio","selected":false,"hasPrice":false,"price":null,"priceFormatted":null},{"title":"1 :: Opt 5","description":"","type":"radio","selected":false,"hasPrice":false,"price":null,"priceFormatted":null}]}]},{"id":2,"name":"Lanche 2","description":"Laborum elit ullamco eiusmod cupidatat pariatur.","price":20.99,"priceFormatted":"20,99","images":{"120x120":["/img/food-120-120-1.jpg","/img/food-120-120-2.jpg","/img/food-120-120-3.jpg","/img/food-120-120-4.jpg"],"720x240":["/img/food-720-240-1.jpg","/img/food-720-240-2.jpg","/img/food-720-240-3.jpg","/img/food-720-240-4.jpg"]}}]},{"id":2,"name":"Bebidas","items":[{"id":3,"name":"Bebida 1","description":"Laborum elit ullamco eiusmod cupidatat pariatur.","price":10.99,"priceFormatted":"10,99","images":{"120x120":["/img/food-120-120-1.jpg","/img/food-120-120-2.jpg","/img/food-120-120-3.jpg","/img/food-120-120-4.jpg"],"720x240":["/img/food-720-240-1.jpg","/img/food-720-240-2.jpg","/img/food-720-240-3.jpg","/img/food-720-240-4.jpg"]}},{"id":4,"name":"Bebida 2","description":"Laborum elit ullamco eiusmod cupidatat pariatur.","price":20.99,"priceFormatted":"20,99","images":{"120x120":["/img/food-120-120-1.jpg","/img/food-120-120-2.jpg","/img/food-120-120-3.jpg","/img/food-120-120-4.jpg"],"720x240":["/img/food-720-240-1.jpg","/img/food-720-240-2.jpg","/img/food-720-240-3.jpg","/img/food-720-240-4.jpg"]}}]}]}');</script>
     <script src="/js/app.js"></script>
 
 </body>
